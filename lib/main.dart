@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts_pembile/screen/about_page.dart';
 import 'package:uts_pembile/screen/input_data.dart';
 import 'package:uts_pembile/screen/list_informasi.dart';
 
@@ -163,6 +164,11 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               ListTile(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => AboutPage()),
+                  );
+                },
                 leading: Icon(
                   Icons.info,
                   size: 28,
