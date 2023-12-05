@@ -8,40 +8,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< HEAD
       home: HomePage(),
       debugShowCheckedModeBanner: false,
-=======
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Brew'),
->>>>>>> 19e8359368d83f25a8ef17441773f653419bdde7
     );
   }
 }
 
 class HomePage extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _openDrawer() {
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[300],
         elevation: 0,
@@ -49,18 +32,158 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            //Open Menu
+            _openDrawer(); // Open Menu
           },
           icon: Icon(Icons.menu),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              //Account
+              // Account
             },
             icon: Icon(Icons.account_circle),
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: Center(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(20),
+                width: double.infinity,
+                height: 120,
+                color: Colors.blue,
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  "Menu",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
+                },
+                leading: Icon(
+                  Icons.home,
+                  size: 28,
+                ),
+                title: Text(
+                  "Home",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.person,
+                  size: 28,
+                ),
+                title: Text(
+                  "Profil",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.category,
+                  size: 28,
+                ),
+                title: Text(
+                  "Category",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.favorite,
+                  size: 28,
+                ),
+                title: Text(
+                  "Favorite",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.shopping_cart,
+                  size: 28,
+                ),
+                title: Text(
+                  "Cart",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.history,
+                  size: 28,
+                ),
+                title: Text(
+                  "Order History",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  size: 28,
+                ),
+                title: Text(
+                  "Settings",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.info,
+                  size: 28,
+                ),
+                title: Text(
+                  "About",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  size: 28,
+                ),
+                title: Text(
+                  "Log Out",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +230,7 @@ class _HeroWidgetState extends State<HeroWidget> {
           ),
           SizedBox(height: 8), // Adding some space between texts
           Text(
-            'Moh Yusuf',
+            'Customer',
             style: TextStyle(
               color: Colors.black45,
               fontSize: 40.0,
