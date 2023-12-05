@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uts_pembile/screen/input_data.dart';
+import 'package:uts_pembile/screen/list_informasi.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +55,7 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.all(20),
                 width: double.infinity,
                 height: 120,
-                color: Colors.blue,
+                color: Colors.purple[400],
                 alignment: Alignment.bottomLeft,
                 child: Text(
                   "Menu",
@@ -67,13 +69,6 @@ class HomePage extends StatelessWidget {
                 height: 10,
               ),
               ListTile(
-                onTap: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => HomePage(),
-                    ),
-                  );
-                },
                 leading: Icon(
                   Icons.home,
                   size: 28,
@@ -98,24 +93,34 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               ListTile(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => ListInformasi()),
+                  );
+                },
                 leading: Icon(
-                  Icons.category,
+                  Icons.collections,
                   size: 28,
                 ),
                 title: Text(
-                  "Category",
+                  "Catalog",
                   style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
               ),
               ListTile(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => IntroPage()),
+                  );
+                },
                 leading: Icon(
-                  Icons.favorite,
+                  Icons.data_array,
                   size: 28,
                 ),
                 title: Text(
-                  "Favorite",
+                  "Input Data",
                   style: TextStyle(
                     fontSize: 18,
                   ),
